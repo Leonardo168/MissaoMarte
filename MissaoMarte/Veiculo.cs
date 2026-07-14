@@ -9,7 +9,12 @@ public class Veiculo
         Direcao = direcao;
     }
 
-    public int CoordX { get; }
+    public int CoordX { get; set; }
     public int CoordY { get; }
     public char Direcao { get; }
+
+    public void IncrementarCoordX()
+    {
+        this.CoordX++;
+    }
 }

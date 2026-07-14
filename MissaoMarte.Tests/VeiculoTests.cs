@@ -18,4 +18,18 @@ public sealed class VeiculoTests
         Assert.AreEqual(coordY, veiculo.CoordY);
         Assert.AreEqual(direcao, veiculo.Direcao);
     }
+
+    [TestMethod]
+    [DataRow(0, 0, 'L')]
+    public void TestIncrementarCoordX(int coordX, int coordY, char direcao)
+    {
+        // Arrange
+        var veiculo = new Veiculo(coordX, coordY, direcao);
+
+        // Act
+        veiculo.IncrementarCoordX();
+
+        // Assert
+        Assert.AreEqual(coordX + 1, veiculo.CoordX);
+    }
 }
