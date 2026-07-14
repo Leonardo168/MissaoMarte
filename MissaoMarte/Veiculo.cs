@@ -27,4 +27,9 @@ public class Veiculo
     {
         this.CoordX--;
     }
+
+    public void DecrementarCoordY()
+    {
+        this.CoordY--;
+    }
 }

@@ -60,4 +60,18 @@ public sealed class VeiculoTests
         // Assert
         Assert.AreEqual(coordX - 1, veiculo.CoordX);
     }
+
+    [TestMethod]
+    [DataRow(1, 0, 'S')]
+    public void TestDecrementarCoordY(int coordX, int coordY, char direcao)
+    {
+        // Arrange
+        var veiculo = new Veiculo(coordX, coordY, direcao);
+
+        // Act
+        veiculo.DecrementarCoordY();
+
+        // Assert
+        Assert.AreEqual(coordY - 1, veiculo.CoordY);
+    }
 }
