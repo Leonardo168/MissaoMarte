@@ -34,6 +34,20 @@ public sealed class VeiculoTests
     }
 
     [TestMethod]
+    [DataRow(0, 0, 'N')]
+    public void TestIncrementarCoordY(int coordX, int coordY, char direcao)
+    {
+        // Arrange
+        var veiculo = new Veiculo(coordX, coordY, direcao);
+
+        // Act
+        veiculo.IncrementarCoordY();
+
+        // Assert
+        Assert.AreEqual(coordY + 1, veiculo.CoordY);
+    }
+
+    [TestMethod]
     [DataRow(1, 0, 'O')]
     public void TestDecrementarCoordX(int coordX, int coordY, char direcao)
     {
