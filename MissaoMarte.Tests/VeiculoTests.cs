@@ -32,4 +32,18 @@ public sealed class VeiculoTests
         // Assert
         Assert.AreEqual(coordX + 1, veiculo.CoordX);
     }
+
+    [TestMethod]
+    [DataRow(1, 0, 'O')]
+    public void TestDecrementarCoordX(int coordX, int coordY, char direcao)
+    {
+        // Arrange
+        var veiculo = new Veiculo(coordX, coordY, direcao);
+
+        // Act
+        veiculo.DecrementarCoordX();
+
+        // Assert
+        Assert.AreEqual(coordX - 1, veiculo.CoordX);
+    }
 }
