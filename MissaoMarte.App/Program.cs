@@ -20,6 +20,7 @@ InputUtility.CapturarPosicaoVeiculo(inputVeiculo1Partes, out coordXVeiculo1, out
 
 Veiculo veiculo1 = new Veiculo(coordXVeiculo1, coordYVeiculo1, direcaoVeiculo1);
 
+// ToDo implementar comportamento esperado em caso de input invalido
 string inputInstrucoesVeiculo1 = InputUtility.CapturarInput("Insira as instrucoes do primeiro veiculo: ");
 // ToDo implementar comportamento esperado em caso de instrucoes invalidas
 char[] instrucoesVeiculo1 = InputUtility.CapturarInstrucoes(inputInstrucoesVeiculo1);
@@ -35,6 +36,7 @@ InputUtility.CapturarPosicaoVeiculo(inputVeiculo2Partes, out coordXVeiculo2, out
 
 Veiculo veiculo2 = new Veiculo(coordXVeiculo2, coordYVeiculo2, direcaoVeiculo2);
 
+// ToDo implementar comportamento esperado em caso de input invalido
 string inputInstrucoesVeiculo2 = InputUtility.CapturarInput("Insira as instrucoes do segundo veiculo: ");
 // ToDo implementar comportamento esperado em caso de instrucoes invalidas
 char[] instrucoesVeiculo2 = InputUtility.CapturarInstrucoes(inputInstrucoesVeiculo2);
