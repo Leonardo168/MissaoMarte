@@ -7,16 +7,21 @@ namespace MissaoMarte.App.Utilities
 {
     public static class InputUtility
     {
-        public static string[] CapturarInput(string msg)
+        public static string CapturarInput(string msg)
         {
             Console.WriteLine(msg);
             string? input = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(input))
             {
-                string[] partes = input.Split(' ');
-                return partes;
+                return input;
             }
             throw new ArgumentException("Input invalido.");
+        }
+
+        public static string[] DividirInput(string input)
+        {
+            string[] inputPartes = input.Split(' ');
+            return inputPartes;
         }
 
         private static bool TryParseCoordenada(string input, out int coord)
@@ -71,10 +76,8 @@ namespace MissaoMarte.App.Utilities
             return partes.All(instrucoesValidas.Contains);
         }
 
-        public static char[] CapturarInstrucoes(string msg)
+        public static char[] CapturarInstrucoes(string input)
         {
-            Console.WriteLine(msg);
-            string? input = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(input))
             {
                 char[] partes = input.Where(c => !char.IsWhiteSpace(c)).ToArray();

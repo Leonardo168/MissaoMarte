@@ -15,15 +15,14 @@ namespace MissaoMarte.Tests
         public void TestCapturarInput(string inputLinha)
         {
             // Arrange
-            string[] inputPartes;
+            string input;
             Console.SetIn(new StringReader(inputLinha));
 
             // Act
-            inputPartes = InputUtility.CapturarInput(" ");
-            string inputReconstruido = string.Join(" ", inputPartes);
+            input = InputUtility.CapturarInput(" ");
 
             // Assert
-            Assert.AreEqual(inputLinha, inputReconstruido);
+            Assert.AreEqual(inputLinha, input);
         }
 
         [TestMethod]
@@ -39,6 +38,19 @@ namespace MissaoMarte.Tests
             // Assert
             var ex = Assert.ThrowsExactly<ArgumentException>(act);
             Assert.AreEqual("Input invalido.", ex.Message);
+        }
+
+        [TestMethod]
+        [DataRow("1 1 N", new string[] { "1", "1", "N" })]
+        public void TestDividirInput(string input, string[] inputDividido)
+        {
+            // Arrange
+
+            // Act
+            string[] inputPartes = InputUtility.DividirInput(input);
+
+            // Assert
+            CollectionAssert.AreEqual(inputDividido, inputPartes);
         }
 
         [TestMethod]
@@ -108,21 +120,19 @@ namespace MissaoMarte.Tests
         }
 
         [TestMethod]
-        [DataRow("EEAD")]
-        [DataRow("EE AD")]
-        public void TestCapturarInstrucoes(string inputLinha)
+        [DataRow("EEAD", "EEAD")]
+        [DataRow("EE AD", "EEAD")]
+        public void TestCapturarInstrucoes(string input, string inputSemEspacos)
         {
             // Arrange
             char[] inputPartes;
-            Console.SetIn(new StringReader(inputLinha));
-            inputLinha = new string(inputLinha.Where(c => !char.IsWhiteSpace(c)).ToArray());
 
             // Act
-            inputPartes = InputUtility.CapturarInstrucoes(" ");
+            inputPartes = InputUtility.CapturarInstrucoes(input);
             string inputReconstruido = string.Join("", inputPartes);
 
             // Assert
-            Assert.AreEqual(inputLinha, inputReconstruido);
+            Assert.AreEqual(inputSemEspacos, inputReconstruido);
         }
 
         [TestMethod]
