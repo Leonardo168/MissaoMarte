@@ -28,7 +28,7 @@ namespace MissaoMarte.Tests
 
         [TestMethod]
         [DataRow("")]
-        public void TestCapturarInput_excessao(string inputLinha)
+        public void TestCapturarInput_Excessao(string inputLinha)
         {
             // Arrange
             Console.SetIn(new StringReader(inputLinha));
@@ -39,6 +39,37 @@ namespace MissaoMarte.Tests
             // Assert
             var ex = Assert.ThrowsExactly<ArgumentException>(act);
             Assert.AreEqual("Input invalido.", ex.Message);
+        }
+
+        [TestMethod]
+        [DataRow(new[] { "1", "1" })]
+        public void TestCapturarCoordenadasCampoDePouso(string[] inputPartes)
+        {
+            // Arrange
+            int coordX, coordY;
+
+            // Act
+            InputUtility.CapturarCoordenadasCampoDePouso(inputPartes, out coordX, out coordY);
+
+            // Assert
+            Assert.AreEqual(inputPartes[0], coordX.ToString());
+            Assert.AreEqual(inputPartes[1], coordY.ToString());
+        }
+
+        [TestMethod]
+        [DataRow(new[] { "S", "1" })]
+        [DataRow(new[] { "1", "-1" })]
+        public void TestCapturarCoordenadasCampoDePouso_Excessao(string[] inputPartes)
+        {
+            // Arrange
+            int coordX, coordY;
+
+            // Act
+            Action act = () => InputUtility.CapturarCoordenadasCampoDePouso(inputPartes, out coordX, out coordY);
+
+            // Assert
+            var ex = Assert.ThrowsExactly<ArgumentException>(act);
+            Assert.AreEqual("Coordenadas invalidas.", ex.Message);
         }
     }
 }

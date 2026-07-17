@@ -18,5 +18,18 @@ namespace MissaoMarte.App.Utilities
             }
             throw new ArgumentException("Input invalido.");
         }
+
+        public static void CapturarCoordenadasCampoDePouso(string[] inputPartes, out int coordX, out int coordY)
+        {
+            if (inputPartes.Length == 2 &&
+                int.TryParse(inputPartes[0], out coordX) &&
+                coordX >= 0 &&
+                int.TryParse(inputPartes[1], out coordY) &&
+                coordY >= 0)
+            {
+                return;
+            }
+            throw new ArgumentException("Coordenadas invalidas.");
+        }
     }
 }
