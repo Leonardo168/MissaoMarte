@@ -95,4 +95,25 @@ public class Veiculo
                 break;
         }
     }
+
+    public void ExecutarInstrucoes(char[] instrucoes)
+    {
+        foreach (var item in instrucoes)
+        {
+            switch (item)
+            {
+                case 'E':
+                    VirarEsquerda();
+                    break;
+                case 'D':
+                    VirarDireita();
+                    break;
+                case 'A':
+                    Avancar();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }

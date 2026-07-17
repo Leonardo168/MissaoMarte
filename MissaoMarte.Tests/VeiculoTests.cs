@@ -126,4 +126,22 @@ public sealed class VeiculoTests
         Assert.AreEqual(coordXEsperada, veiculo.CoordX);
         Assert.AreEqual(coordYEsperada, veiculo.CoordY);
     }
+
+    [TestMethod]
+    [DataRow(new[] { 'E', 'A', 'E' }, 1, 1, 'N', 0, 1, 'S')]
+    public void TestExecutarInstrucoes(char[] instrucoes,
+    int coordXIni, int coordYIni, char DirecaoIni,
+    int coordXFim, int coordYFim, char DirecaoFim)
+    {
+        // Arrange
+        Veiculo veiculo = new Veiculo(coordXIni, coordYIni, DirecaoIni);
+
+        // Act
+        veiculo.ExecutarInstrucoes(instrucoes);
+
+        // Assert
+        Assert.AreEqual(coordXFim, veiculo.CoordX);
+        Assert.AreEqual(coordYFim, veiculo.CoordY);
+        Assert.AreEqual(DirecaoFim, veiculo.Direcao);
+    }
 }
