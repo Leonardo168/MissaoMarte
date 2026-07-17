@@ -1,4 +1,5 @@
-Obs: É necessário estar no diretório MissaoMarte.App para rodar com o comando dotnet run
+Obs: É necessário estar no diretório MissaoMarte.App para executar o comando dotnet run.<br/>
+Obs: O comando dotnet test pode ser executado no diretório raiz.
 
 # Missão Marte
 A NASA está se preparando para pousar um grupo de veículos na superfície de Marte. O campo de pouso, que é curiosamente retangular, precisa ser explorado pelos veículos para que suas câmeras possam realizar o reconhecimento do terreno ao seu redor e enviar informações à Terra.
