@@ -64,5 +64,26 @@ namespace MissaoMarte.App.Utilities
             }
             throw new ArgumentException("Posicao invalida.");
         }
+
+        private static bool ValidarInstrucoes(char[] partes)
+        {
+            HashSet<char> instrucoesValidas = ['E', 'D', 'A'];
+            return partes.All(instrucoesValidas.Contains);
+        }
+
+        public static char[] CapturarInstrucoes(string msg)
+        {
+            Console.WriteLine(msg);
+            string? input = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(input))
+            {
+                char[] partes = input.Where(c => !char.IsWhiteSpace(c)).ToArray();
+                if (ValidarInstrucoes(partes))
+                {
+                    return partes;
+                }
+            }
+            throw new ArgumentException("Instrucoes invalidas.");
+        }
     }
 }

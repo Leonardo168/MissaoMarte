@@ -106,5 +106,40 @@ namespace MissaoMarte.Tests
             var ex = Assert.ThrowsExactly<ArgumentException>(act);
             Assert.AreEqual("Posicao invalida.", ex.Message);
         }
+
+        [TestMethod]
+        [DataRow("EEAD")]
+        [DataRow("EE AD")]
+        public void TestCapturarInstrucoes(string inputLinha)
+        {
+            // Arrange
+            char[] inputPartes;
+            Console.SetIn(new StringReader(inputLinha));
+            inputLinha = new string(inputLinha.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+            // Act
+            inputPartes = InputUtility.CapturarInstrucoes(" ");
+            string inputReconstruido = string.Join("", inputPartes);
+
+            // Assert
+            Assert.AreEqual(inputLinha, inputReconstruido);
+        }
+
+        [TestMethod]
+        [DataRow("")]
+        [DataRow(" ")]
+        [DataRow("EETA")]
+        public void TestCapturarInstrucoes_Excessao(string inputLinha)
+        {
+            // Arrange
+            Console.SetIn(new StringReader(inputLinha));
+
+            // Act
+            Action act = () => InputUtility.CapturarInstrucoes("TestCapturarInstrucoes_Excessao: ");
+
+            // Assert
+            var ex = Assert.ThrowsExactly<ArgumentException>(act);
+            Assert.AreEqual("Instrucoes invalidas.", ex.Message);
+        }
     }
 }
