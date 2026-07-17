@@ -34,5 +34,35 @@ namespace MissaoMarte.App.Utilities
             }
             throw new ArgumentException("Coordenadas invalidas.");
         }
+
+        private static bool TryParseDirecao(string input, out char direcao)
+        {
+            if (char.TryParse(input, out direcao))
+            {
+                switch (direcao)
+                {
+                    case 'N':
+                    case 'L':
+                    case 'S':
+                    case 'O':
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+            return false;
+        }
+
+        public static void CapturarPosicaoVeiculo(string[] inputPartes, out int coordX, out int coordY, out char direcao)
+        {
+            if (inputPartes.Length == 3 &&
+                TryParseCoordenada(inputPartes[0], out coordX) &&
+                TryParseCoordenada(inputPartes[1], out coordY) &&
+                TryParseDirecao(inputPartes[2], out direcao))
+            {
+                return;
+            }
+            throw new ArgumentException("Posicao invalida.");
+        }
     }
 }

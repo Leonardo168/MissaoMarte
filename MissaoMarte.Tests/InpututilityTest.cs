@@ -71,5 +71,40 @@ namespace MissaoMarte.Tests
             var ex = Assert.ThrowsExactly<ArgumentException>(act);
             Assert.AreEqual("Coordenadas invalidas.", ex.Message);
         }
+
+        [TestMethod]
+        [DataRow(new[] { "1", "1", "N" })]
+        public void TestCapturarPosicaoVeiculo(string[] inputPartes)
+        {
+            // Arrange
+            int coordX, coordY;
+            char direcao;
+
+            // Act
+            InputUtility.CapturarPosicaoVeiculo(inputPartes, out coordX, out coordY, out direcao);
+
+            // Assert
+            Assert.AreEqual(inputPartes[0], coordX.ToString());
+            Assert.AreEqual(inputPartes[1], coordY.ToString());
+            Assert.AreEqual(inputPartes[2], direcao.ToString());
+        }
+
+        [TestMethod]
+        [DataRow(new[] { "1", "1", "A" })]
+        [DataRow(new[] { "-1", "1", "N" })]
+        [DataRow(new[] { "1", "S", "N" })]
+        public void TestCapturarPosicaoVeiculo_Excessao(string[] inputPartes)
+        {
+            // Arrange
+            int coordX, coordY;
+            char direcao;
+
+            // Act
+            Action act = () => InputUtility.CapturarPosicaoVeiculo(inputPartes, out coordX, out coordY, out direcao);
+
+            // Assert
+            var ex = Assert.ThrowsExactly<ArgumentException>(act);
+            Assert.AreEqual("Posicao invalida.", ex.Message);
+        }
     }
 }
