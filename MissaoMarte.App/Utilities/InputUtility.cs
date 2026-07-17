@@ -19,13 +19,16 @@ namespace MissaoMarte.App.Utilities
             throw new ArgumentException("Input invalido.");
         }
 
+        private static bool TryParseCoordenada(string input, out int coord)
+        {
+            return int.TryParse(input, out coord) && coord >= 0;
+        }
+
         public static void CapturarCoordenadasCampoDePouso(string[] inputPartes, out int coordX, out int coordY)
         {
             if (inputPartes.Length == 2 &&
-                int.TryParse(inputPartes[0], out coordX) &&
-                coordX >= 0 &&
-                int.TryParse(inputPartes[1], out coordY) &&
-                coordY >= 0)
+                TryParseCoordenada(inputPartes[0], out coordX) &&
+                TryParseCoordenada(inputPartes[1], out coordY))
             {
                 return;
             }
