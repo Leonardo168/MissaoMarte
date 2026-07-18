@@ -74,4 +74,25 @@ public class Veiculo
                 break;
         }
     }
+
+    public void Avancar()
+    {
+        switch (this.Direcao)
+        {
+            case 'N':
+                IncrementarCoordY();
+                break;
+            case 'L':
+                IncrementarCoordX();
+                break;
+            case 'S':
+                DecrementarCoordY();
+                break;
+            case 'O':
+                DecrementarCoordX();
+                break;
+            default:
+                break;
+        }
+    }
 }
