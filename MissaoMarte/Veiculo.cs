@@ -11,7 +11,7 @@ public class Veiculo
 
     public int CoordX { get; set; }
     public int CoordY { get; set; }
-    public char Direcao { get; }
+    public char Direcao { get; set; }
 
     public void IncrementarCoordX()
     {
@@ -31,5 +31,26 @@ public class Veiculo
     public void DecrementarCoordY()
     {
         this.CoordY--;
+    }
+
+    public void VirarDireita()
+    {
+        switch (this.Direcao)
+        {
+            case 'N':
+                this.Direcao = 'L';
+                break;
+            case 'L':
+                this.Direcao = 'S';
+                break;
+            case 'S':
+                this.Direcao = 'O';
+                break;
+            case 'O':
+                this.Direcao = 'N';
+                break;
+            default:
+                break;
+        }
     }
 }
