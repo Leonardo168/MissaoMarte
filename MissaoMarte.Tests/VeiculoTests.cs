@@ -91,4 +91,21 @@ public sealed class VeiculoTests
         // Assert
         Assert.AreEqual(direcaoEsperada, veiculo.Direcao);
     }
+
+    [TestMethod]
+    [DataRow(0, 0, 'N', 'O')]
+    [DataRow(0, 0, 'O', 'S')]
+    [DataRow(0, 0, 'S', 'L')]
+    [DataRow(0, 0, 'L', 'N')]
+    public void TestVirarEsquerda(int coordX, int coordY, char direcao, char direcaoEsperada)
+    {
+        // Arrange
+        var veiculo = new Veiculo(coordX, coordY, direcao);
+
+        // Act
+        veiculo.VirarEsquerda();
+
+        // Assert
+        Assert.AreEqual(direcaoEsperada, veiculo.Direcao);
+    }
 }

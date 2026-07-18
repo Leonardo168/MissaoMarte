@@ -53,4 +53,25 @@ public class Veiculo
                 break;
         }
     }
+
+    public void VirarEsquerda()
+    {
+        switch (this.Direcao)
+        {
+            case 'N':
+                this.Direcao = 'O';
+                break;
+            case 'O':
+                this.Direcao = 'S';
+                break;
+            case 'S':
+                this.Direcao = 'L';
+                break;
+            case 'L':
+                this.Direcao = 'N';
+                break;
+            default:
+                break;
+        }
+    }
 }
